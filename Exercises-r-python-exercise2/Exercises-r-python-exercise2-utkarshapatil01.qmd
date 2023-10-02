@@ -1,5 +1,5 @@
 ---
-title: "Exercises-r-python-exercise2"
+title: "Exercises-r-python-exercise2-utkarshapatil01"
 author: Utkarsha Patil
 format: html
 editor: visual
@@ -67,6 +67,8 @@ Creating connection to database 'mydatabase' on localhost with the help of crede
 ```{r warning=FALSE, message=FALSE, error=FALSE}
 con <- src_mysql("mydatabase", user = "root", password = "utkpat", host = "localhost")
 ```
+
+Extracting data of employee table from db mydatabase.
 
 ```{r warning=FALSE}
 employees <- tbl(con, "employees")
@@ -242,7 +244,7 @@ library(dplyr)
 
 missing.value.rows <- data |>
   filter(!complete.cases(data))
-missing.value.rows # Remove observations or columns with many NAs:
+missing.value.rows # Remove observations or columns with many NAs
 ```
 
 ```{r}
@@ -257,15 +259,17 @@ following data frame that shows the column names and their corresponding missing
 data |>
   summarize(across(everything(), ~sum(is.na(.)), .names = "na_{.col}")) %>%
   pivot_longer(everything(), names_to = "column_name", values_to = "na_count") %>%
-  arrange(na_count)
+  arrange(na_count) # The data frame is sorted in ascending order of missing value counts.
 ```
 
 ```{r}
 data.bser.removed <- data %>%
   select(-8) %>%
   summarise(across(everything(), ~sum(is.na(.)), .names = "na_{.col}"))
-data.bser.removed
+data.bser.removed #  Each row in the data frame represents a column from the original dataset and the number of missing values in that column
 ```
+
+Columns with names containing "bser" will be removed :
 
 ```{r}
 data <- data %>%
@@ -727,24 +731,32 @@ idwt(xt)
 
 # **Sampling**
 
+Sampling refers to the process of selecting a subset or sample from a larger population or dataset to make inferences or draw conclusions about the entire population.
+
 ```{r}
-set.seed(1)
+set.seed(1) # initializes the random number generator with the seed value of 1
 age <- c(25, 25, 25, 30, 33, 33, 35, 40, 45, 46, 52, 70)
 ```
 
 ## **Simple random sampling, without replacement:**
 
+Each element or item in a population has an equal probability of being selected for a sample, and once an item is selected, it is not placed back into the population.
+
 ```{r}
-sample(age, 5)
+sample(age, 5) #  selecting 5 random values from that dataset
 ```
 
 ## **Simple random sampling, with replacement:**
 
+Each element or item in a population has an equal probability of being selected for a sample, and after each selection, the item is placed back into the population.
+
 ```{r}
-sample(age, 5, replace = TRUE)
+sample(age, 5, replace = TRUE) # selecting 5 random values from that dataset with replacement.
 ```
 
 ## **Stratified sampling**
+
+Sampling technique used in statistics and research to ensure that the sample drawn from a population is representative of different subgroups or strata within the population.
 
 ```{r}
 library(dplyr)
@@ -754,10 +766,12 @@ summary(algae)
 
 ```{r}
 sample <-algae |> group_by(season) |> sample_frac(0.25)
-summary(sample)
+summary(sample) # randomly select 25% of the data from each season
 ```
 
 ## **Cluster sampling**
+
+Population is divided into groups or clusters, and then a subset of these clusters is randomly selected for inclusion in the sample.
 
 ```{r}
 if (!require("sampling"))
@@ -790,7 +804,7 @@ mode(docs)
 ## **Inspect a document**
 
 ```{r}
-docs[[20]]
+docs[[20]] #  access the 20th element of a list 
 ```
 
 ## **Preprocessing text**
@@ -812,7 +826,7 @@ content(docs[[20]]) #note: stemming reduces a word to its ‘root’ with the aa
 Convert text to a matrix using `TF*IDF scores`
 
 ```{r}
-DTData <- DocumentTermMatrix(docs, control = list(weighting = weightTfIdf))
+DTData <- DocumentTermMatrix(docs, control = list(weighting = weightTfIdf)) #  assigning weights to terms (words) in a document based on their frequency 
 ```
 
 ```{r}
@@ -839,19 +853,27 @@ findFreqTerms(TDData, lowfreq = 75, highfreq = 1000)
 
 Find correlations among terms:
 
+Identify terms that are positively correlated with "bill"
+
 ```{r}
 findAssocs(TDData, terms = "bill", corlimit = 0.25)
 ```
 
+The **c("bill")** notation creates a character vector
+
 ```{r}
 findAssocs(DTData, terms=c("bill"), corlimit = 0.25)
 ```
+
+Identify terms that are positively correlated with "schedul"
 
 ```{r}
 findAssocs(DTData, terms=c("schedul"), corlimit = 0.3)
 ```
 
 ## **Create a word cloud**
+
+Word cloud displays words from a text dataset, where the size of each word corresponds to its frequency or importance in the dataset.
 
 ```{r}
 if (!require("wordcloud"))
@@ -868,7 +890,7 @@ freq <- sort(rowSums(data), decreasing = TRUE)
 base <-data.frame(word = names(freq), freq = freq)
 ```
 
-`png()` opens a new device \'png\' to output the graph to a local file
+`png()` opens a new device 'png' to output the graph to a local file
 
 ```{r}
 # Save the word cloud as a PNG file
@@ -878,10 +900,14 @@ wordcloud(base$word, base$freq, col = terrain.colors(length(base$word), alpha = 
 dev.off()  # Close the PNG device
 ```
 
+The word cloud will display the words with larger fonts for more frequent words and smaller fonts for less frequent words.
+
 ```{r}
 wordcloud(base$word, base$freq, col = terrain.colors(length(base$word), alpha = 0.9), 
 random.order = FALSE, rot.per = 0.3, scale = c(1, .1))
 ```
+
+**One-hot** **encoding** is a technique used to convert categorical variables (like "language" in your example) into binary columns.
 
 ```{r}
 if (!require("onehot"))
@@ -894,9 +920,7 @@ new_d <- predict(encoded, d)
 new_d
 ```
 
-```{r}
-
-```
+Split the text values into separate tokens (words or phrases) within the "language" column.
 
 ```{r}
 if (!require("qdapTools"))
@@ -910,19 +934,24 @@ d
 dlist <- as.list(d)
 new_d <- data.frame(cbind(dlist, mtabulate(strsplit(as.character(dlist$language), ", ")))) 
 
-new_d
-```
-
-```{r}
-dlist <- as.list(d)
-new_d <- data.frame(cbind(dlist, mtabulate(strsplit(as.character(dlist$language), ", ")))) 
-
-new_d
+new_d #  create a new data frame
 ```
 
 # **\[ADVANCED\]**
 
 1.  What attributes are there in your data set?
+
+    -\> I am using Diamonds data set from ggplot2. Which has attributes as following:
+
+    "carat" "cut" "color" "clarity" "depth" "table" "price"
+
+    Which can be shown using following functions:
+
+    **names(diamonds):** The **`names`** function in R is used to retrieve the column names (variable names) of a data frame or other objects.
+
+    **colnames(diamonds):** The **`colnames`** function in R is used to retrieve the column names (variable names) of a data frame or matrix.
+
+    **summary(diamonds):** The **`summary`** function in R is used to generate a summary of a data frame.
 
 ```{r}
 # Load the 'ggplot2' package and access the 'diamonds' dataset
@@ -935,12 +964,13 @@ names(diamonds)
 # Alternatively, you can use the colnames() function
 colnames(diamonds)
 
+# You can also print summary of the dataframe
 summary(diamonds)
 ```
 
 2.  Do you have highly correlated attributes? How did you find out about the correlations or lack of correlations
 
-    -\> We will plot correlation plot for numeric attributes of the data set here it will be carat, depth, table & price for 'diamonds' data set.
+    -\> We will plot correlation plot for numeric attributes of the data set here it will be carat, depth, table & price for 'diamonds' data set. By examining the correlation plot, you can visually identify highly correlated attributes (strong, positive or negative correlations) as well as attributes with little or no correlation.
 
 ```{r}
 # Load the 'ggplot2' package and access the 'diamonds' dataset
@@ -958,7 +988,7 @@ correlation_matrix <- diamonds_numeric %>%
 
 # Load the 'corrplot' package
 if (!require("corrplot"))
-install.packages("corrplot") # Install the package if not already installed
+install.packages("corrplot")
 library(corrplot)
 
 # Create a basic correlation plot
@@ -968,11 +998,20 @@ corrplot(correlation_matrix, method = "color")
 
 3.  Do you have numerical attributes that you might want to bin? Try at least two methods and compare the differences.
 
-```{r}
-# Load the 'ggplot2' package and access the 'diamonds' dataset
-library(ggplot2)
-data(diamonds)
+    1.  **Equal depth binning:** Equal depth binning, also known as quantile binning, divides the data into intervals such that each interval contains approximately the same number of data points.
 
+    ```{r}
+    # Equal depth binning for 'carat' attribute
+    diamonds$carat_equal_depth <- cut(diamonds$carat, breaks = quantile(diamonds$carat, probs = seq(0, 1, 1/5)))
+
+    # Equal depth binning for 'price' attribute
+    diamonds$price_equal_depth <- cut(diamonds$price, breaks = quantile(diamonds$price, probs = seq(0, 1, 1/5)))
+
+    # View the first few rows of the dataset with the new attributes
+    head(diamonds[, c("carat_equal_depth", "price_equal_depth")])
+    ```
+
+```{r}
 # Binning using equal frequency
 diamonds_equal_freq <- diamonds %>%
   mutate(carat_bin_equal_freq = cut(carat, quantile(carat, probs = seq(0, 1, by = 0.2)), labels = FALSE))
@@ -982,20 +1021,41 @@ head(diamonds_equal_freq)
 
 ```
 
+**Clustering-based binning:** involves using clustering algorithms to group similar data points together and then using these clusters as bins for binning a numerical attribute.
+
+```{r}
+# Load the 'stats' package for the k-means clustering algorithm
+library(stats)
+
+# Extract the 'carat' attribute for clustering
+carat_data <- diamonds$carat
+
+# Perform k-means clustering
+clustering_result <- kmeans(matrix(carat_data, ncol = 1), centers = 4)
+
+# Extract cluster assignments
+cluster_assignments <- clustering_result$cluster
+
+# Add cluster assignments as a new column to the dataset
+diamonds$carat_clusters <- cluster_assignments
+
+# View the first few rows of the dataset with cluster assignments
+head(diamonds[, c("carat", "carat_clusters")])
+
+```
+
 4.  If you have categorical attributes, use the concept hierarchy generation heuristics (based on attribute value counts) suggested in the textbook to produce some concept hierarchies. How well does this approach work for your attributes?
 
 ```{r}
-# Load the 'ggplot2' package and access the 'diamonds' dataset
-library(ggplot2)
-data(diamonds)
+# Calculate the frequency of each 'cut' category
+cut_counts <- table(diamonds$cut)
 
-# Generate a concept hierarchy for the 'cut' attribute
-cut_hierarchy <- diamonds %>%
-  group_by(cut) %>%
-  summarize(count = n()) %>%
-  arrange(desc(count))
+# Sort the categories by frequency in descending order
+cut_counts <- sort(cut_counts, decreasing = TRUE)
 
-# Print the concept hierarchy
-print(cut_hierarchy)
+# Generate a concept hierarchy based on frequency
+concept_hierarchy <- data.frame(Cut = names(cut_counts), Frequency = as.numeric(cut_counts))
 
+# Display the concept hierarchy for 'cut'
+print(concept_hierarchy)
 ```

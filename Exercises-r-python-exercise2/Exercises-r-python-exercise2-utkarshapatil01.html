@@ -8,7 +8,7 @@
 
 <meta name="author" content="Utkarsha Patil">
 
-<title>Exercises-r-python-exercise2</title>
+<title>Exercises-r-python-exercise2-utkarshapatil01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercises-r-python-exercise2</h1>
+<h1 class="title">Exercises-r-python-exercise2-utkarshapatil01</h1>
 </div>
 
 
@@ -195,6 +195,7 @@ $ Age  &lt;dbl&gt; 13, 14, NA, 21</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">src_mysql</span>(<span class="st">"mydatabase"</span>, <span class="at">user =</span> <span class="st">"root"</span>, <span class="at">password =</span> <span class="st">"utkpat"</span>, <span class="at">host =</span> <span class="st">"localhost"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Extracting data of employee table from db mydatabase.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>employees <span class="ot">&lt;-</span> <span class="fu">tbl</span>(con, <span class="st">"employees"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>employees</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1059,7 +1060,7 @@ lgl (60): X1, X3, X7, X9, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, ...
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>missing.value.rows <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
 <span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">complete.cases</span>(data))</span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>missing.value.rows <span class="co"># Remove observations or columns with many NAs:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>missing.value.rows <span class="co"># Remove observations or columns with many NAs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 196 × 71
    age_gt_60 air      airBoneGap ar_c     ar_u   bone  boneAbnormal bser 
@@ -1115,7 +1116,7 @@ lgl (60): X1, X3, X7, X9, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, ...
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)), <span class="at">.names =</span> <span class="st">"na_{.col}"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"column_name"</span>, <span class="at">values_to =</span> <span class="st">"na_count"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(na_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(na_count) <span class="co"># The data frame is sorted in ascending order of missing value counts.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 72 × 2
    column_name            na_count
@@ -1137,7 +1138,7 @@ lgl (60): X1, X3, X7, X9, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, ...
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>data.bser.removed <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="dv">8</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span><span class="fu">sum</span>(<span class="fu">is.na</span>(.)), <span class="at">.names =</span> <span class="st">"na_{.col}"</span>))</span>
-<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>data.bser.removed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>data.bser.removed <span class="co">#  Each row in the data frame represents a column from the original dataset and the number of missing values in that column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 71
   na_age_gt_60 na_air na_airBoneGap na_ar_c na_ar_u na_bone na_boneAbnormal
@@ -1152,6 +1153,7 @@ lgl (60): X1, X3, X7, X9, X10, X11, X12, X13, X14, X15, X16, X17, X18, X19, ...
 #   na_m_gt_1k &lt;int&gt;, na_m_m_gt_2k &lt;int&gt;, na_m_m_sn &lt;int&gt;, …</code></pre>
 </div>
 </div>
+<p>Columns with names containing “bser” will be removed :</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">matches</span>(<span class="st">"bser"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1487,7 +1489,7 @@ function (data, k = 10, scale = TRUE, meth = "weighAvg", distData = NULL)
     }
     data[1:n, ]
 }
-&lt;bytecode: 0x000002056d2bc5b8&gt;
+&lt;bytecode: 0x000002a856e18940&gt;
 &lt;environment: namespace:DMwR2&gt;</code></pre>
 </div>
 </div>
@@ -1654,6 +1656,7 @@ Attaching package: 'palmerpenguins'</code></pre>
 </div>
 <section id="equal-depth" class="level3">
 <h3 class="anchored" data-anchor-id="equal-depth"><strong>Equal-depth</strong></h3>
+<p>Equal-depth binning, also known as quantile-based binning, is a technique for dividing a continuous variable into bins or intervals such that each bin contains approximately the same number of observations.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb133"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create equal-depth bins for the 'age' variable</span></span>
 <span id="cb133-2"><a href="#cb133-2" aria-hidden="true" tabindex="-1"></a>Boston<span class="sc">$</span>newAge <span class="ot">&lt;-</span> <span class="fu">cut</span>(Boston<span class="sc">$</span>age, <span class="at">breaks =</span> <span class="dv">5</span>)</span>
@@ -1700,6 +1703,7 @@ very-young      young        mid      older   very-old
 </section>
 <section id="decimal-scaling" class="level2">
 <h2 class="anchored" data-anchor-id="decimal-scaling"><strong>Decimal scaling</strong></h2>
+<p>Decimal scaling is a data normalization technique used to scale numerical data features to a common range, typically between -1 and 1 or -10 and 10, by moving the decimal point of each data point.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb139"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1717,6 +1721,7 @@ very-young      young        mid      older   very-old
 </div>
 <section id="smoothing-by-bin-mean" class="level3">
 <h3 class="anchored" data-anchor-id="smoothing-by-bin-mean"><strong>Smoothing by bin mean</strong></h3>
+<p>Smoothing by bin mean is a data preprocessing technique used to reduce the noise in a dataset by replacing each data point with the mean value of data points within a specific bin or interval. This technique is particularly useful when you have noisy data and want to create a smoother representation of the underlying trends in the data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a>age <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">13</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">21</span>, <span class="dv">22</span>, <span class="dv">22</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">30</span>)</span>
 <span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1762,6 +1767,7 @@ very-young      young        mid      older   very-old
 <h1><strong>Variable correlations and dimensionality reduction</strong></h1>
 <section id="chi-squared-test" class="level2">
 <h2 class="anchored" data-anchor-id="chi-squared-test"><strong>Chi-squared test</strong></h2>
+<p>A chi-squared test is a statistical test used to determine whether there is a significant association between two categorical variables</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb152"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>racetable <span class="ot">=</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">151</span>,<span class="dv">9</span>), <span class="fu">c</span>(<span class="dv">63</span>,<span class="dv">103</span>))</span>
 <span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a>test1 <span class="ot">=</span> <span class="fu">chisq.test</span>(racetable, <span class="at">correct=</span>F)</span>
@@ -1777,6 +1783,7 @@ X-squared = 115.01, df = 1, p-value &lt; 2.2e-16</code></pre>
 </section>
 <section id="loglinear-model" class="level2">
 <h2 class="anchored" data-anchor-id="loglinear-model"><strong>Loglinear model</strong></h2>
+<p>A loglinear model, also known as a log-linear model or logit model, is a statistical model used for analyzing relationships between categorical variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb154"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>seniors <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data =</span> <span class="fu">c</span>(<span class="dv">911</span>, <span class="dv">44</span>, <span class="dv">538</span>, <span class="dv">456</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">43</span>, <span class="dv">279</span>, <span class="dv">911</span>, <span class="dv">44</span>, <span class="dv">538</span>, <span class="dv">456</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">43</span>, <span class="dv">279</span>), </span>
 <span id="cb154-2"><a href="#cb154-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">dim =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
@@ -2015,6 +2022,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </section>
 <section id="correlations" class="level2">
 <h2 class="anchored" data-anchor-id="correlations"><strong>Correlations</strong></h2>
+<p>Correlation analysis is a statistical technique used to measure the strength and direction of the linear relationship between two or more continuous variables</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb169"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr) <span class="co"># data manipulation</span></span>
 <span id="cb169-2"><a href="#cb169-2" aria-hidden="true" tabindex="-1"></a>penguins_numeric <span class="sc">|&gt;</span> </span>
@@ -2041,6 +2049,7 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </section>
 <section id="principal-components-analysis-pca" class="level2">
 <h2 class="anchored" data-anchor-id="principal-components-analysis-pca"><strong>Principal components analysis (PCA)</strong></h2>
+<p>Principal Component Analysis (PCA) is a dimensionality reduction technique commonly used in statistics and data science to transform high-dimensional data into a lower-dimensional form while preserving as much of the original data’s variance as possible.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb171"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" aria-hidden="true" tabindex="-1"></a>pca.data <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
 <span id="cb171-2"><a href="#cb171-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">|&gt;</span></span>
@@ -2295,14 +2304,16 @@ Slot "coe":
 </section>
 <section id="sampling" class="level1">
 <h1><strong>Sampling</strong></h1>
+<p>Sampling refers to the process of selecting a subset or sample from a larger population or dataset to make inferences or draw conclusions about the entire population.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<div class="sourceCode cell-code" id="cb190"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co"># initializes the random number generator with the seed value of 1</span></span>
 <span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">33</span>, <span class="dv">33</span>, <span class="dv">35</span>, <span class="dv">40</span>, <span class="dv">45</span>, <span class="dv">46</span>, <span class="dv">52</span>, <span class="dv">70</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="simple-random-sampling-without-replacement" class="level2">
 <h2 class="anchored" data-anchor-id="simple-random-sampling-without-replacement"><strong>Simple random sampling, without replacement:</strong></h2>
+<p>Each element or item in a population has an equal probability of being selected for a sample, and once an item is selected, it is not placed back into the population.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(age, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb191"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb191-1"><a href="#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(age, <span class="dv">5</span>) <span class="co">#  selecting 5 random values from that dataset</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 45 30 35 25 25</code></pre>
 </div>
@@ -2310,8 +2321,9 @@ Slot "coe":
 </section>
 <section id="simple-random-sampling-with-replacement" class="level2">
 <h2 class="anchored" data-anchor-id="simple-random-sampling-with-replacement"><strong>Simple random sampling, with replacement:</strong></h2>
+<p>Each element or item in a population has an equal probability of being selected for a sample, and after each selection, the item is placed back into the population.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(age, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb193"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb193-1"><a href="#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(age, <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>) <span class="co"># selecting 5 random values from that dataset with replacement.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 35 52 25 52 25</code></pre>
 </div>
@@ -2319,6 +2331,7 @@ Slot "coe":
 </section>
 <section id="stratified-sampling" class="level2">
 <h2 class="anchored" data-anchor-id="stratified-sampling"><strong>Stratified sampling</strong></h2>
+<p>Sampling technique used in statistics and research to ensure that the sample drawn from a population is representative of different subgroups or strata within the population.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb195"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb195-1"><a href="#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb195-2"><a href="#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>) <span class="co">#make results the same each run</span></span>
@@ -2363,7 +2376,7 @@ Slot "coe":
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb197"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a>sample <span class="ot">&lt;-</span>algae <span class="sc">|&gt;</span> <span class="fu">group_by</span>(season) <span class="sc">|&gt;</span> <span class="fu">sample_frac</span>(<span class="fl">0.25</span>)</span>
-<span id="cb197-2"><a href="#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb197-2"><a href="#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sample) <span class="co"># randomly select 25% of the data from each season</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    season       size       speed         mxPH            mnO2       
  autumn:10   large :18   high  :16   Min.   :5.600   Min.   : 1.500  
@@ -2405,6 +2418,7 @@ Slot "coe":
 </section>
 <section id="cluster-sampling" class="level2">
 <h2 class="anchored" data-anchor-id="cluster-sampling"><strong>Cluster sampling</strong></h2>
+<p>Population is divided into groups or clusters, and then a subset of these clusters is randomly selected for inclusion in the sample.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb199"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"sampling"</span>))</span>
 <span id="cb199-2"><a href="#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"sampling"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2464,7 +2478,7 @@ Slot "coe":
 <section id="inspect-a-document" class="level2">
 <h2 class="anchored" data-anchor-id="inspect-a-document"><strong>Inspect a document</strong></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a>docs[[<span class="dv">20</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb207"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb207-1"><a href="#cb207-1" aria-hidden="true" tabindex="-1"></a>docs[[<span class="dv">20</span>]] <span class="co">#  access the 20th element of a list </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;&lt;PlainTextDocument&gt;&gt;
 Metadata:  7
@@ -2515,7 +2529,7 @@ transformation drops documents</code></pre>
 </div>
 <p>Convert text to a matrix using&nbsp;<code>TF*IDF scores</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb218"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a>DTData <span class="ot">&lt;-</span> <span class="fu">DocumentTermMatrix</span>(docs, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">weighting =</span> weightTfIdf))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb218"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb218-1"><a href="#cb218-1" aria-hidden="true" tabindex="-1"></a>DTData <span class="ot">&lt;-</span> <span class="fu">DocumentTermMatrix</span>(docs, <span class="at">control =</span> <span class="fu">list</span>(<span class="at">weighting =</span> weightTfIdf)) <span class="co">#  assigning weights to terms (words) in a document based on their frequency </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in TermDocumentMatrix.SimpleCorpus(x, control): custom functions are
 ignored</code></pre>
@@ -2585,6 +2599,7 @@ Terms                1          2          3          4          5
 </div>
 </div>
 <p>Find correlations among terms:</p>
+<p>Identify terms that are positively correlated with “bill”</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb232"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb232-1"><a href="#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findAssocs</span>(TDData, <span class="at">terms =</span> <span class="st">"bill"</span>, <span class="at">corlimit =</span> <span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2593,6 +2608,7 @@ burn
 0.26 </code></pre>
 </div>
 </div>
+<p>The <strong>c(“bill”)</strong> notation creates a character vector</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb234"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb234-1"><a href="#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findAssocs</span>(DTData, <span class="at">terms=</span><span class="fu">c</span>(<span class="st">"bill"</span>), <span class="at">corlimit =</span> <span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2601,6 +2617,7 @@ burn
 0.26 </code></pre>
 </div>
 </div>
+<p>Identify terms that are positively correlated with “schedul”</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb236"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb236-1"><a href="#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">findAssocs</span>(DTData, <span class="at">terms=</span><span class="fu">c</span>(<span class="st">"schedul"</span>), <span class="at">corlimit =</span> <span class="fl">0.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -2612,6 +2629,7 @@ burn
 </section>
 <section id="create-a-word-cloud" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-word-cloud"><strong>Create a word cloud</strong></h2>
+<p>Word cloud displays words from a text dataset, where the size of each word corresponds to its frequency or importance in the dataset.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb238"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb238-1"><a href="#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"wordcloud"</span>))</span>
 <span id="cb238-2"><a href="#cb238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"wordcloud"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2631,7 +2649,7 @@ burn
 <span id="cb242-2"><a href="#cb242-2" aria-hidden="true" tabindex="-1"></a>freq <span class="ot">&lt;-</span> <span class="fu">sort</span>(<span class="fu">rowSums</span>(data), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb242-3"><a href="#cb242-3" aria-hidden="true" tabindex="-1"></a>base <span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">word =</span> <span class="fu">names</span>(freq), <span class="at">freq =</span> freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>png()</code>&nbsp;opens a new device 'png' to output the graph to a local file</p>
+<p><code>png()</code>&nbsp;opens a new device ‘png’ to output the graph to a local file</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb243"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb243-1"><a href="#cb243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the word cloud as a PNG file</span></span>
 <span id="cb243-2"><a href="#cb243-2" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="at">file =</span> <span class="st">"wordCloud.png"</span>, <span class="at">width =</span> <span class="dv">1000</span>, <span class="at">height =</span> <span class="dv">700</span>, <span class="at">bg =</span> <span class="st">"grey30"</span>)</span>
@@ -2643,6 +2661,7 @@ burn
   2 </code></pre>
 </div>
 </div>
+<p>The word cloud will display the words with larger fonts for more frequent words and smaller fonts for less frequent words.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb245"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb245-1"><a href="#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wordcloud</span>(base<span class="sc">$</span>word, base<span class="sc">$</span>freq, <span class="at">col =</span> <span class="fu">terrain.colors</span>(<span class="fu">length</span>(base<span class="sc">$</span>word), <span class="at">alpha =</span> <span class="fl">0.9</span>), </span>
 <span id="cb245-2"><a href="#cb245-2" aria-hidden="true" tabindex="-1"></a><span class="at">random.order =</span> <span class="cn">FALSE</span>, <span class="at">rot.per =</span> <span class="fl">0.3</span>, <span class="at">scale =</span> <span class="fu">c</span>(<span class="dv">1</span>, .<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2650,6 +2669,7 @@ burn
 <p><img src="Exercises-r-python-exercise2-utkarshapatil01_files/figure-html/unnamed-chunk-125-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><strong>One-hot</strong> <strong>encoding</strong> is a technique used to convert categorical variables (like “language” in your example) into binary columns.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb246"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb246-1"><a href="#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"onehot"</span>))</span>
 <span id="cb246-2"><a href="#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"onehot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2669,6 +2689,7 @@ burn
 [3,]             1                   0               0     5</code></pre>
 </div>
 </div>
+<p>Split the text values into separate tokens (words or phrases) within the “language” column.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb250"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb250-1"><a href="#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"qdapTools"</span>))</span>
 <span id="cb250-2"><a href="#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"qdapTools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2697,18 +2718,7 @@ Attaching package: 'qdapTools'</code></pre>
 <div class="sourceCode cell-code" id="cb256"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb256-1"><a href="#cb256-1" aria-hidden="true" tabindex="-1"></a>dlist <span class="ot">&lt;-</span> <span class="fu">as.list</span>(d)</span>
 <span id="cb256-2"><a href="#cb256-2" aria-hidden="true" tabindex="-1"></a>new_d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(dlist, <span class="fu">mtabulate</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(dlist<span class="sc">$</span>language), <span class="st">", "</span>)))) </span>
 <span id="cb256-3"><a href="#cb256-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb256-4"><a href="#cb256-4" aria-hidden="true" tabindex="-1"></a>new_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>            language hours java javascript python
-1 javascript, python     3    0          1      1
-2               java     5    1          0      0</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb258"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a>dlist <span class="ot">&lt;-</span> <span class="fu">as.list</span>(d)</span>
-<span id="cb258-2"><a href="#cb258-2" aria-hidden="true" tabindex="-1"></a>new_d <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(dlist, <span class="fu">mtabulate</span>(<span class="fu">strsplit</span>(<span class="fu">as.character</span>(dlist<span class="sc">$</span>language), <span class="st">", "</span>)))) </span>
-<span id="cb258-3"><a href="#cb258-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb258-4"><a href="#cb258-4" aria-hidden="true" tabindex="-1"></a>new_d</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb256-4"><a href="#cb256-4" aria-hidden="true" tabindex="-1"></a>new_d <span class="co">#  create a new data frame</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            language hours java javascript python
 1 javascript, python     3    0          1      1
@@ -2720,26 +2730,33 @@ Attaching package: 'qdapTools'</code></pre>
 <section id="advanced" class="level1">
 <h1><strong>[ADVANCED]</strong></h1>
 <ol type="1">
-<li>What attributes are there in your data set?</li>
+<li><p>What attributes are there in your data set?</p>
+<p>-&gt; I am using Diamonds data set from ggplot2. Which has attributes as following:</p>
+<p>“carat” “cut” “color” “clarity” “depth” “table” “price”</p>
+<p>Which can be shown using following functions:</p>
+<p><strong>names(diamonds):</strong> The <strong><code>names</code></strong> function in R is used to retrieve the column names (variable names) of a data frame or other objects.</p>
+<p><strong>colnames(diamonds):</strong> The <strong><code>colnames</code></strong> function in R is used to retrieve the column names (variable names) of a data frame or matrix.</p>
+<p><strong>summary(diamonds):</strong> The <strong><code>summary</code></strong> function in R is used to generate a summary of a data frame.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb260"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb260-1"><a href="#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'ggplot2' package and access the 'diamonds' dataset</span></span>
-<span id="cb260-2"><a href="#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb260-3"><a href="#cb260-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(diamonds)</span>
-<span id="cb260-4"><a href="#cb260-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb260-5"><a href="#cb260-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the names() function to view the attributes</span></span>
-<span id="cb260-6"><a href="#cb260-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(diamonds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb258"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb258-1"><a href="#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'ggplot2' package and access the 'diamonds' dataset</span></span>
+<span id="cb258-2"><a href="#cb258-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb258-3"><a href="#cb258-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(diamonds)</span>
+<span id="cb258-4"><a href="#cb258-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb258-5"><a href="#cb258-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the names() function to view the attributes</span></span>
+<span id="cb258-6"><a href="#cb258-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(diamonds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "carat"   "cut"     "color"   "clarity" "depth"   "table"   "price"  
  [8] "x"       "y"       "z"      </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb262"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb262-1"><a href="#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, you can use the colnames() function</span></span>
-<span id="cb262-2"><a href="#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(diamonds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb260"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb260-1"><a href="#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, you can use the colnames() function</span></span>
+<span id="cb260-2"><a href="#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(diamonds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "carat"   "cut"     "color"   "clarity" "depth"   "table"   "price"  
  [8] "x"       "y"       "z"      </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb264"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb264-1"><a href="#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(diamonds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb262"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb262-1"><a href="#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You can also print summary of the dataframe</span></span>
+<span id="cb262-2"><a href="#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(diamonds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     carat               cut        color        clarity          depth      
  Min.   :0.2000   Fair     : 1610   D: 6775   SI1    :13065   Min.   :43.00  
@@ -2769,55 +2786,75 @@ Attaching package: 'qdapTools'</code></pre>
 </div>
 <ol start="2" type="1">
 <li><p>Do you have highly correlated attributes? How did you find out about the correlations or lack of correlations</p>
-<p>-&gt; We will plot correlation plot for numeric attributes of the data set here it will be carat, depth, table &amp; price for ‘diamonds’ data set.</p></li>
+<p>-&gt; We will plot correlation plot for numeric attributes of the data set here it will be carat, depth, table &amp; price for ‘diamonds’ data set. By examining the correlation plot, you can visually identify highly correlated attributes (strong, positive or negative correlations) as well as attributes with little or no correlation.</p></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb266"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb266-1"><a href="#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'ggplot2' package and access the 'diamonds' dataset</span></span>
-<span id="cb266-2"><a href="#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb266-3"><a href="#cb266-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(diamonds)</span>
-<span id="cb266-4"><a href="#cb266-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-5"><a href="#cb266-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only numeric columns</span></span>
-<span id="cb266-6"><a href="#cb266-6" aria-hidden="true" tabindex="-1"></a>diamonds_numeric <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span></span>
-<span id="cb266-7"><a href="#cb266-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carat, depth, table, price)</span>
-<span id="cb266-8"><a href="#cb266-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-9"><a href="#cb266-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the correlation matrix</span></span>
-<span id="cb266-10"><a href="#cb266-10" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> diamonds_numeric <span class="sc">%&gt;%</span></span>
-<span id="cb266-11"><a href="#cb266-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb266-12"><a href="#cb266-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
-<span id="cb266-13"><a href="#cb266-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb266-14"><a href="#cb266-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'corrplot' package</span></span>
-<span id="cb266-15"><a href="#cb266-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"corrplot"</span>))</span>
-<span id="cb266-16"><a href="#cb266-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"corrplot"</span>) <span class="co"># Install the package if not already installed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb264"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb264-1"><a href="#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'ggplot2' package and access the 'diamonds' dataset</span></span>
+<span id="cb264-2"><a href="#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb264-3"><a href="#cb264-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(diamonds)</span>
+<span id="cb264-4"><a href="#cb264-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-5"><a href="#cb264-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only numeric columns</span></span>
+<span id="cb264-6"><a href="#cb264-6" aria-hidden="true" tabindex="-1"></a>diamonds_numeric <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span></span>
+<span id="cb264-7"><a href="#cb264-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(carat, depth, table, price)</span>
+<span id="cb264-8"><a href="#cb264-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-9"><a href="#cb264-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the correlation matrix</span></span>
+<span id="cb264-10"><a href="#cb264-10" aria-hidden="true" tabindex="-1"></a>correlation_matrix <span class="ot">&lt;-</span> diamonds_numeric <span class="sc">%&gt;%</span></span>
+<span id="cb264-11"><a href="#cb264-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb264-12"><a href="#cb264-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>()</span>
+<span id="cb264-13"><a href="#cb264-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-14"><a href="#cb264-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'corrplot' package</span></span>
+<span id="cb264-15"><a href="#cb264-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"corrplot"</span>))</span>
+<span id="cb264-16"><a href="#cb264-16" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"corrplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: corrplot</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>corrplot 0.92 loaded</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb269"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb269-1"><a href="#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
-<span id="cb269-2"><a href="#cb269-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb269-3"><a href="#cb269-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a basic correlation plot</span></span>
-<span id="cb269-4"><a href="#cb269-4" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(correlation_matrix, <span class="at">method =</span> <span class="st">"color"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb267"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb267-1"><a href="#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb267-2"><a href="#cb267-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb267-3"><a href="#cb267-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a basic correlation plot</span></span>
+<span id="cb267-4"><a href="#cb267-4" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(correlation_matrix, <span class="at">method =</span> <span class="st">"color"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="Exercises-r-python-exercise2-utkarshapatil01_files/figure-html/unnamed-chunk-132-1.png" class="img-fluid" width="672"></p>
+<p><img src="Exercises-r-python-exercise2-utkarshapatil01_files/figure-html/unnamed-chunk-130-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <ol start="3" type="1">
-<li>Do you have numerical attributes that you might want to bin? Try at least two methods and compare the differences.</li>
+<li><p>Do you have numerical attributes that you might want to bin? Try at least two methods and compare the differences.</p>
+<ol type="1">
+<li><strong>Equal depth binning:</strong> Equal depth binning, also known as quantile binning, divides the data into intervals such that each interval contains approximately the same number of data points.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb270"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb270-1"><a href="#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'ggplot2' package and access the 'diamonds' dataset</span></span>
-<span id="cb270-2"><a href="#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb270-3"><a href="#cb270-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(diamonds)</span>
-<span id="cb270-4"><a href="#cb270-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb270-5"><a href="#cb270-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Binning using equal frequency</span></span>
-<span id="cb270-6"><a href="#cb270-6" aria-hidden="true" tabindex="-1"></a>diamonds_equal_freq <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span></span>
-<span id="cb270-7"><a href="#cb270-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">carat_bin_equal_freq =</span> <span class="fu">cut</span>(carat, <span class="fu">quantile</span>(carat, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.2</span>)), <span class="at">labels =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb270-8"><a href="#cb270-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb270-9"><a href="#cb270-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the binned dataset</span></span>
-<span id="cb270-10"><a href="#cb270-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamonds_equal_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb268"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb268-1"><a href="#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equal depth binning for 'carat' attribute</span></span>
+<span id="cb268-2"><a href="#cb268-2" aria-hidden="true" tabindex="-1"></a>diamonds<span class="sc">$</span>carat_equal_depth <span class="ot">&lt;-</span> <span class="fu">cut</span>(diamonds<span class="sc">$</span>carat, <span class="at">breaks =</span> <span class="fu">quantile</span>(diamonds<span class="sc">$</span>carat, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)))</span>
+<span id="cb268-3"><a href="#cb268-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-4"><a href="#cb268-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Equal depth binning for 'price' attribute</span></span>
+<span id="cb268-5"><a href="#cb268-5" aria-hidden="true" tabindex="-1"></a>diamonds<span class="sc">$</span>price_equal_depth <span class="ot">&lt;-</span> <span class="fu">cut</span>(diamonds<span class="sc">$</span>price, <span class="at">breaks =</span> <span class="fu">quantile</span>(diamonds<span class="sc">$</span>price, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)))</span>
+<span id="cb268-6"><a href="#cb268-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb268-7"><a href="#cb268-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows of the dataset with the new attributes</span></span>
+<span id="cb268-8"><a href="#cb268-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamonds[, <span class="fu">c</span>(<span class="st">"carat_equal_depth"</span>, <span class="st">"price_equal_depth"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 11
+<pre><code># A tibble: 6 × 2
+  carat_equal_depth price_equal_depth
+  &lt;fct&gt;             &lt;fct&gt;            
+1 (0.2,0.35]        &lt;NA&gt;             
+2 (0.2,0.35]        &lt;NA&gt;             
+3 (0.2,0.35]        (326,837]        
+4 (0.2,0.35]        (326,837]        
+5 (0.2,0.35]        (326,837]        
+6 (0.2,0.35]        (326,837]        </code></pre>
+</div>
+</div></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb270"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb270-1"><a href="#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Binning using equal frequency</span></span>
+<span id="cb270-2"><a href="#cb270-2" aria-hidden="true" tabindex="-1"></a>diamonds_equal_freq <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span></span>
+<span id="cb270-3"><a href="#cb270-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">carat_bin_equal_freq =</span> <span class="fu">cut</span>(carat, <span class="fu">quantile</span>(carat, <span class="at">probs =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">by =</span> <span class="fl">0.2</span>)), <span class="at">labels =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb270-4"><a href="#cb270-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb270-5"><a href="#cb270-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows of the binned dataset</span></span>
+<span id="cb270-6"><a href="#cb270-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamonds_equal_freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 13
   carat cut       color clarity depth table price     x     y     z
   &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 1  0.23 Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
@@ -2826,34 +2863,63 @@ Attaching package: 'qdapTools'</code></pre>
 4  0.29 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
 5  0.31 Good      J     SI2      63.3    58   335  4.34  4.35  2.75
 6  0.24 Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
-# ℹ 1 more variable: carat_bin_equal_freq &lt;int&gt;</code></pre>
+# ℹ 3 more variables: carat_equal_depth &lt;fct&gt;, price_equal_depth &lt;fct&gt;,
+#   carat_bin_equal_freq &lt;int&gt;</code></pre>
+</div>
+</div>
+<p><strong>Clustering-based binning:</strong> involves using clustering algorithms to group similar data points together and then using these clusters as bins for binning a numerical attribute.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb272"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb272-1"><a href="#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'stats' package for the k-means clustering algorithm</span></span>
+<span id="cb272-2"><a href="#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb272-3"><a href="#cb272-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-4"><a href="#cb272-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the 'carat' attribute for clustering</span></span>
+<span id="cb272-5"><a href="#cb272-5" aria-hidden="true" tabindex="-1"></a>carat_data <span class="ot">&lt;-</span> diamonds<span class="sc">$</span>carat</span>
+<span id="cb272-6"><a href="#cb272-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-7"><a href="#cb272-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform k-means clustering</span></span>
+<span id="cb272-8"><a href="#cb272-8" aria-hidden="true" tabindex="-1"></a>clustering_result <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(<span class="fu">matrix</span>(carat_data, <span class="at">ncol =</span> <span class="dv">1</span>), <span class="at">centers =</span> <span class="dv">4</span>)</span>
+<span id="cb272-9"><a href="#cb272-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-10"><a href="#cb272-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract cluster assignments</span></span>
+<span id="cb272-11"><a href="#cb272-11" aria-hidden="true" tabindex="-1"></a>cluster_assignments <span class="ot">&lt;-</span> clustering_result<span class="sc">$</span>cluster</span>
+<span id="cb272-12"><a href="#cb272-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-13"><a href="#cb272-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add cluster assignments as a new column to the dataset</span></span>
+<span id="cb272-14"><a href="#cb272-14" aria-hidden="true" tabindex="-1"></a>diamonds<span class="sc">$</span>carat_clusters <span class="ot">&lt;-</span> cluster_assignments</span>
+<span id="cb272-15"><a href="#cb272-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb272-16"><a href="#cb272-16" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows of the dataset with cluster assignments</span></span>
+<span id="cb272-17"><a href="#cb272-17" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(diamonds[, <span class="fu">c</span>(<span class="st">"carat"</span>, <span class="st">"carat_clusters"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  carat carat_clusters
+  &lt;dbl&gt;          &lt;int&gt;
+1  0.23              2
+2  0.21              2
+3  0.23              2
+4  0.29              2
+5  0.31              2
+6  0.24              2</code></pre>
 </div>
 </div>
 <ol start="4" type="1">
 <li>If you have categorical attributes, use the concept hierarchy generation heuristics (based on attribute value counts) suggested in the textbook to produce some concept hierarchies. How well does this approach work for your attributes?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb272"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb272-1"><a href="#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the 'ggplot2' package and access the 'diamonds' dataset</span></span>
-<span id="cb272-2"><a href="#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb272-3"><a href="#cb272-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(diamonds)</span>
-<span id="cb272-4"><a href="#cb272-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb272-5"><a href="#cb272-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a concept hierarchy for the 'cut' attribute</span></span>
-<span id="cb272-6"><a href="#cb272-6" aria-hidden="true" tabindex="-1"></a>cut_hierarchy <span class="ot">&lt;-</span> diamonds <span class="sc">%&gt;%</span></span>
-<span id="cb272-7"><a href="#cb272-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cut) <span class="sc">%&gt;%</span></span>
-<span id="cb272-8"><a href="#cb272-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb272-9"><a href="#cb272-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
-<span id="cb272-10"><a href="#cb272-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb272-11"><a href="#cb272-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the concept hierarchy</span></span>
-<span id="cb272-12"><a href="#cb272-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cut_hierarchy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb274"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb274-1"><a href="#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the frequency of each 'cut' category</span></span>
+<span id="cb274-2"><a href="#cb274-2" aria-hidden="true" tabindex="-1"></a>cut_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(diamonds<span class="sc">$</span>cut)</span>
+<span id="cb274-3"><a href="#cb274-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb274-4"><a href="#cb274-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort the categories by frequency in descending order</span></span>
+<span id="cb274-5"><a href="#cb274-5" aria-hidden="true" tabindex="-1"></a>cut_counts <span class="ot">&lt;-</span> <span class="fu">sort</span>(cut_counts, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb274-6"><a href="#cb274-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb274-7"><a href="#cb274-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a concept hierarchy based on frequency</span></span>
+<span id="cb274-8"><a href="#cb274-8" aria-hidden="true" tabindex="-1"></a>concept_hierarchy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Cut =</span> <span class="fu">names</span>(cut_counts), <span class="at">Frequency =</span> <span class="fu">as.numeric</span>(cut_counts))</span>
+<span id="cb274-9"><a href="#cb274-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb274-10"><a href="#cb274-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the concept hierarchy for 'cut'</span></span>
+<span id="cb274-11"><a href="#cb274-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(concept_hierarchy)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-  cut       count
-  &lt;ord&gt;     &lt;int&gt;
-1 Ideal     21551
-2 Premium   13791
-3 Very Good 12082
-4 Good       4906
-5 Fair       1610</code></pre>
+<pre><code>        Cut Frequency
+1     Ideal     21551
+2   Premium     13791
+3 Very Good     12082
+4      Good      4906
+5      Fair      1610</code></pre>
 </div>
 </div>
 </section>
